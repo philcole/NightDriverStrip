@@ -220,7 +220,9 @@
 #define FASTLED_INTERNAL            1   // Suppresses the compilation banner from FastLED
 #define __STDC_FORMAT_MACROS
 
-extern RemoteDebug Debug;           // Let everyone in the project know about it.  If you don't have it, delete this
+#define POWER_LIMIT_MW          1500
+
+extern RemoteDebug Debug;           // yone in the project know about it.  If you don't have it, delete this
 
 // Project Configuration
 //
@@ -252,7 +254,10 @@ extern RemoteDebug Debug;           // Let everyone in the project know about it
     #define PROJECT_NAME            "Demo"
     #endif
 
-    #define MATRIX_WIDTH            144
+    // #define MATRIX_WIDTH            144*1
+    // #define MATRIX_WIDTH            144*2
+    #define NUM_STRIPS              3
+    #define MATRIX_WIDTH            (144*NUM_STRIPS)
     #define MATRIX_HEIGHT           1
     #define NUM_LEDS                (MATRIX_WIDTH*MATRIX_HEIGHT)
     #define NUM_CHANNELS            1
@@ -284,7 +289,7 @@ extern RemoteDebug Debug;           // Let everyone in the project know about it
     // named "esp32-" followed by a seemingly random 6-digit hexadecimal number.
 
     #ifndef ENABLE_WEBSERVER
-        #define ENABLE_WEBSERVER        0   // Turn on the internal webserver
+        #define ENABLE_WEBSERVER        1   // Turn on the internal webserver
     #endif
 
 #elif M5DEMO
